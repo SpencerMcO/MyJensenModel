@@ -34,11 +34,11 @@ def getFullVelocityDeficit(jensen_model_type, alpha, rotor_radius, x_distance, t
     else:
 
         # METHOD 1: JENSEN COSINE ADJUSTMENT OUTSIDE OF THE SQUARED TERMS. ASSUMING CORRECT.
-        # return 1.0 - getJensenCosineAdjustment(np.radians(theta)) * getPartialVelocityDeficit(alpha, rotor_radius, x_distance)
+        return 1.0 - (getJensenCosineAdjustment(np.radians(theta)) * getPartialVelocityDeficit(alpha, rotor_radius, x_distance))
 
         # METHOD 2: JENSEN COSINE ADJUSTMENT INSIDE THE SQUARED TERMS.
-        return 1.0 - getPartialVelocityDeficit(alpha, rotor_radius, x_distance, getJensenCosineAdjustment(
-            np.radians(theta)))
+        # return 1.0 - getPartialVelocityDeficit(alpha, rotor_radius, x_distance, getJensenCosineAdjustment(
+        #     np.radians(theta)))
 
 # DONE DEFINING FUNCTIONS.
 
@@ -115,15 +115,15 @@ def main():
     # DONE WITH MAIN CALCULATIONS. BEGIN PLOTTING.
 
     # Import points from the txt file I got from WebPlotDigitizer.
-    topHatPoints16 = np.loadtxt('DataFiles/JensenTopHatGraph16.txt', delimiter=',')
-    topHatPoints10 = np.loadtxt('DataFiles/JensenTopHatGraph10.txt', delimiter=',')
-    topHatPoints6 = np.loadtxt('DataFiles/JensenTopHatGraph6.txt', delimiter=',')
-    cosinePoints16 = np.loadtxt('DataFiles/JensenCosineGraph16.txt', delimiter=',')
-    cosinePoints10 = np.loadtxt('DataFiles/JensenCosineGraph10.txt', delimiter=',')
-    cosinePoints6 = np.loadtxt('DataFiles/JensenCosineGraph6.txt', delimiter=',')
-    scatterPoints16 = np.loadtxt('DataFiles/JensenScatterGraph16.txt', delimiter=',')
-    scatterPoints10 = np.loadtxt('DataFiles/JensenScatterGraph10.txt', delimiter=',')
-    scatterPoints6 = np.loadtxt('DataFiles/JensenScatterGraph6.txt', delimiter=',')
+    topHatPoints16 = np.loadtxt('../DataFiles/JensenTopHatGraph16.txt', delimiter=',')
+    topHatPoints10 = np.loadtxt('../DataFiles/JensenTopHatGraph10.txt', delimiter=',')
+    topHatPoints6 = np.loadtxt('../DataFiles/JensenTopHatGraph6.txt', delimiter=',')
+    cosinePoints16 = np.loadtxt('../DataFiles/JensenCosineGraph16.txt', delimiter=',')
+    cosinePoints10 = np.loadtxt('../DataFiles/JensenCosineGraph10.txt', delimiter=',')
+    cosinePoints6 = np.loadtxt('../DataFiles/JensenCosineGraph6.txt', delimiter=',')
+    scatterPoints16 = np.loadtxt('../DataFiles/JensenScatterGraph16.txt', delimiter=',')
+    scatterPoints10 = np.loadtxt('../DataFiles/JensenScatterGraph10.txt', delimiter=',')
+    scatterPoints6 = np.loadtxt('../DataFiles/JensenScatterGraph6.txt', delimiter=',')
 
     # Slice the top-hat points into x- and y-coordinates.
     JensenTopHatGraph16_X_coordinates = topHatPoints16[:,0]
